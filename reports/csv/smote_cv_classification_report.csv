@@ -1,0 +1,6 @@
+,precision,recall,f1-score,support
+No Fraud,1.0,0.89,0.94,50168.0
+Fraud,0.0,0.43,0.0,7.0
+accuracy,0.89,50175.0,,
+macro avg,0.5,0.66,0.47,50175.0
+weighted avg,1.0,0.89,0.94,50175.0

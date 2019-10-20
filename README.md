@@ -1,3 +1,24 @@
+Table of Contents
+=================
+   * [Background of the Data](#background-of-the-data)
+   * [Business Problem](#business-problem)
+   * [Get to know with the data (EDA)](#get-to-know-with-the-data-eda)
+      * [Class Balance](#class-balance)
+      * [Correlations](#correlations)
+      * [Histograms of Features](#histograms-of-features)
+      * [Temporal Feature Study](#temporal-feature-study)
+      * [Amount vs Target](#amount-vs-target)
+      * [Distribution Plots of Features](#distribution-plots-of-features)
+   * [Statistics](#statistics)
+   * [Modelling Various Classifiers](#modelling-various-classifiers)
+   * [Best Model from Grid Search for Underampled Data](#best-model-from-grid-search-for-underampled-data)
+   * [Random Forest Classifier Underampled Data](#random-forest-classifier-underampled-data)
+   * [Detail Study of Logistic Regression with SMOTE Oversampling](#detail-study-of-logistic-regression-with-smote-oversampling)
+   * [Outlier Detection Models: Isolation Forest and Local Outliers Factor (LOF)](#outlier-detection-models-isolation-forest-and-local-outliers-factor-lof)
+   * [Modelling with LightGBM](#modelling-with-lightgbm)
+   * [Deep Learning Methods](#deep-learning-methods)
+   * [Big Data Analysis method using PySpark](#big-data-analysis-method-using-pyspark)
+
 # Background of the Data
 - Data Source: https://www.kaggle.com/mlg-ulb/creditcardfraud
 

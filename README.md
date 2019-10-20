@@ -198,11 +198,132 @@ Finally, we can also look at all the features how their boxplots looks like:
 ![](reports/figures/statistics/boxplot_all_features.png)
 
 # Modelling Various Classifiers
+I am mostly interested in designing a classifier that will give me the lowest
+False Negative values. Or, which will give me the highest Recall. Accuracy is
+not the concern here. Since our dataset is heavily imbalanced,
+first I undersampled the dataset and tested various machine learning
+classifier models.
+
+**False Negative Frauds Detection using Default Classifiers for Undersampled Data**
+![](reports/screenshots/FN_all_default_models_undersample.png)
+
+Then I did grid search to find the best hyperparameters
+for all these models.
+
+**False Negative Frauds Detection using Classifiers with Grid Search for Undersampled Data**
+![](reports/screenshots/FN_all_models_undersample_grid.png)
+
+**Recall for all Classifiers with Grid Search for Undersampled Data**
+![](reports/screenshots/recall_all_models_undersample_grid.png)
+
+**Classification Report for all Classifiers with Grid Search for Undersampled Data**
+![](reports/screenshots/clf_report_all_models_undersample_grid.png)
+
+# Best Model from Grid Search for Underampled Data
+I found that logistic regression is the best model for classification for this dataset.
+![](reports/screenshots/cm_lr_undersample_grid.png)
+![](reports/figures/cv_auroc_lr_undersample_grid.png)
+![](reports/figures/roc_curves_for_all_clf.png)
+
+# Random Forest Classifier Underampled Data
+One nice property of Random Forest is that, it gives the 
+most important features in the dataset. For Undersampled
+dataset, I found V20 was the most important feature.
+![](reports/clf_best_rfc_feature_importances.png)
+![](reports/screenshots/cm_rfc_undersample_grid.png)
 
 # Detail Study of Logistic Regression with SMOTE Oversampling
+Undersampling only gives results good for undersampled test set since in machine learning modelling train and test must come same distribution. Undersampling is a good 
+way to get better results if we already know the class labels. But in fraud detection we only know the fitting parameters but we dont know whether the transactions is 
+normal or fraudulent in advance. So our test set must be imbalanced.
+
+When I tested the logistic regression fitted from underampled training data, it gives ZERO recall for imbalanced test set.
+
+We need to oversample our dataset. One of the most popular
+resampling method to get oversampled data is SMOTE.
+Here, I used SMOTE algorithm and get the Recall of 0.42857 for the imbalanced test set.
+
+**Logistic Regression Model Evaluation Scalar Metrics**
+![](reports/screenshots/lr_model_evaluation_scalar_metrics.png)
+
+
+**Logistic Regression Model Evaluation Classification Metrics**
+![](reports/screenshots/lr_model_evaluation_classification_metrics.png)
+
+**Logistic Regression Confusion Matrix**
+![](reports/screenshots/cm_lr_smote_grid.png)
 
 # Outlier Detection Models: Isolation Forest and Local Outliers Factor (LOF)
+Two of the most popular models to use in Outlier Detection are Isolation Forest
+and Local Outliers Factor. These models work directly on the imbalanced
+dataset and we do not have to undersample or oversample the training dataset.
+
+One technical note for these two models is that they give class results +1
+and -1 and we need to change them to 0 and 1.
+```python
+ypreds[ypreds == 1] = 0
+ypreds[ypreds == -1] = 1
+ypreds_iso = ypreds
+```
+
+Isolation Forest gave me the better result than Local Outlier Factor.
+```
+Isolation Forest Results
+-------------------------
+Total Frauds:  98
+Incorrect Frauds:  73
+Incorrect Percent:  74.49 %
+
+Local Outliers Factor
+-------------------------
+Total Frauds:  98
+Incorrect Frauds:  95
+Incorrect Percent:  96.94 %
+```
 
 # Modelling with LightGBM
+For the underampled data I also tested the lightGBM model.
+It is fast to train and gives decent results.
+
+```
+lightGBM Results
+-------------------------
+Total Frauds:  98
+Incorrect Frauds:  62
+Incorrect Percent:  63.27 %
+```
+
+After grid search, I got smaller number of errors:
+```
+LightGBM Grid Search Results
+-------------------------
+Total Frauds:  98
+Incorrect Frauds:  19
+Incorrect Percent:  19.39 %
+```
 
 # Deep Learning Methods
+If we have large number of samples we can also use deep learning
+methods to train our model. I got the following results for keras.
+```
+Keras Imbalaned Data Results
+-------------------------
+Total Frauds:  98
+Incorrect Frauds:  94
+Incorrect Percent:  95.92 %
+
+Keras Undersampled Train Test Results
+-------------------------
+Total Frauds:  98
+Incorrect Frauds:  7
+Incorrect Percent:  7.14 %
+```
+
+# Big Data Analysis method using PySpark
+For the imbalanced dataset I trained differet classifiers using the pyspark
+module.
+I got the best result for weighted Recall for random forest classifier after a
+grid search.
+
+The results are shown below:
+![](reports/screenshots/pyspark_clf_results.png)

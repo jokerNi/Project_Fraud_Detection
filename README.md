@@ -19,7 +19,7 @@ Table of Contents
    * [Deep Learning Methods](#deep-learning-methods)
    * [Big Data Analysis method using PySpark](#big-data-analysis-method-using-pyspark)
 
-# Authors Comments on Imbalanced Dataset
+# Author's Comments on Imbalanced Dataset
 In this project we have dealt with various usual machine learning classifiers such as `Logistic Regression`,
 `Support Vector Classifier`, `Decision Tree Classifier`, `Random Forest Classifier`, `K-Nearest Neighbours Classifier` with
 and without resampling methods (upsampling SMOTE and downsampling) and with and without grid search (Grid Search

@@ -19,6 +19,23 @@ Table of Contents
    * [Deep Learning Methods](#deep-learning-methods)
    * [Big Data Analysis method using PySpark](#big-data-analysis-method-using-pyspark)
 
+# Authors Comments on Imbalanced Dataset
+In this project we have dealt with various usual machine learning classifiers such as `Logistic Regression`,
+`Support Vector Classifier`, `Decision Tree Classifier`, `Random Forest Classifier`, `K-Nearest Neighbours Classifier` with
+and without resampling methods (upsampling SMOTE and downsampling) and with and without grid search (Grid Search
+and Randomized Search). All these methods works only when we have label column which tells whether the transaction is fraud or not.
+But in real life we have label column only for training data and we do not have label for the test set. Here we should note that
+the test set is highly imbalanced, there are only very few fraud cases and rest of them are non-fraud. We dont know which
+transactionsa are fraud or not and thus can not downsample or upsample. When I did all the classification modelling on 
+imbalanced training and test on imbalanced test set, I got zero recall (basically model predicts everything as non-fraud). If I 
+do modelling on resampled data and test on imbalanced it will also not work because we are simply violating the first principle 
+of machine learning: Training and Test data must come from same distribution.
+
+To deal with imbalanced dataset, we can not use usual machine learning techniques. However, there are some specialized machine
+learning techniques we can use for imbalanced dataset. In this project I have used two of these algorightms called `Local Outliers Factor (LOF)` and `Isolation Forest`. These algorithms does not give results as good as resampling methods but they have advantage
+that we can test these algorigthms on imbalanced dataset. Out of 98 frauds in my test set, using `LOF` gave me 3 correct frauds and `Isolation Forest` gave me 25 correct frauds. In comparison, all of the usual machine learning methods gave me 0 correct frauds out of 98 frauds in imbalanced dataset.
+
+
 # Background of the Data
 - Data Source: https://www.kaggle.com/mlg-ulb/creditcardfraud
 

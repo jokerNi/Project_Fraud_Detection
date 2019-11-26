@@ -37,6 +37,16 @@ that we can test these algorigthms on imbalanced dataset. Out of 98 frauds in my
 
 **Update** After doing usual machine learning algorithms, I again did a follow up with gradient boosting methods. Scikiit learn has a simple boosting algorithm `GradientBoostingClassifier` and there are other specialized libraries just to do the boosting algorithms. Out of those libraries I used `xgboost`, `lightgbm`, and `catboost` classifiers.
 
+**Results For Imbalanced data**  
+```
+After train-test split, we have total frauds = 98
+--------------------------------------------------
+Model                   Correct frauds
+Isolation Forest        25
+Local Outlier Factor    3
+
+```
+
 
 # Background of the Data
 - Data Source: https://www.kaggle.com/mlg-ulb/creditcardfraud

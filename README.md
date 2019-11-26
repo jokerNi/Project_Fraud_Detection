@@ -20,7 +20,7 @@ Table of Contents
    * [Big Data Analysis method using PySpark](#big-data-analysis-method-using-pyspark)
 
 # Author's Comments on Imbalanced Dataset
-In this project we have dealt with various usual machine learning classifiers such as `Logistic Regression`,
+In this project I have dealt with various usual machine learning classifiers such as `Logistic Regression`,
 `Support Vector Classifier`, `Decision Tree Classifier`, `Random Forest Classifier`, `K-Nearest Neighbours Classifier` with
 and without resampling methods (upsampling SMOTE and downsampling) and with and without grid search (Grid Search
 and Randomized Search). All these methods works only when we have label column which tells whether the transaction is fraud or not.
@@ -34,6 +34,8 @@ of machine learning: Training and Test data must come from same distribution.
 To deal with imbalanced dataset, we can not use usual machine learning techniques. However, there are some specialized machine
 learning techniques we can use for imbalanced dataset. In this project I have used two of these algorightms called `Local Outliers Factor (LOF)` and `Isolation Forest`. These algorithms does not give results as good as resampling methods but they have advantage
 that we can test these algorigthms on imbalanced dataset. Out of 98 frauds in my test set, using `LOF` gave me 3 correct frauds and `Isolation Forest` gave me 25 correct frauds. In comparison, all of the usual machine learning methods gave me 0 correct frauds out of 98 frauds in imbalanced dataset.
+
+**Update** After doing usual machine learning algorithms, I again did a follow up with gradient boosting methods. Scikiit learn has a simple boosting algorithm `GradientBoostingClassifier` and there are other specialized libraries just to do the boosting algorithms. Out of those libraries I used `xgboost`, `lightgbm`, and `catboost` classifiers.
 
 
 # Background of the Data
